@@ -1,0 +1,1 @@
+Practising qa automation. This repo contains test cases for automationexercise.com website.
