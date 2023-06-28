@@ -13,6 +13,8 @@ public class SignupLoginPage extends IndexPage {
     private WebElement signupEmailField;
     private WebElement signupButton;
     private WebElement newUserSignUpText;
+    private WebElement loginToYouAccountText;
+    private WebElement incorrectEmailPassword;
 
     public SignupLoginPage(WebDriver driver, WebDriverWait wait) {
         super(driver, wait);
@@ -51,6 +53,16 @@ public class SignupLoginPage extends IndexPage {
     public WebElement getNewUserSignUpText() {
         newUserSignUpText = getDriver().findElement(By.xpath("//h2[text() ='New User Signup!']"));
         return newUserSignUpText;
+    }
+
+    public WebElement getLoginToYouAccountText() {
+        loginToYouAccountText = getDriver().findElement(By.xpath("//h2[text() ='Login to your account']"));
+        return loginToYouAccountText;
+    }
+
+    public WebElement getIncorrectEmailPassword() {
+        incorrectEmailPassword = getDriver().findElement(By.xpath("//p[contains(text(), 'is incorrect')]"));
+        return incorrectEmailPassword;
     }
 
     public SignupLoginPage enterLoginEmail(String text) {
