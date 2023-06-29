@@ -33,11 +33,10 @@ public class LoginTest extends BaseTest {
         getSignupLoginPage().enterLoginEmail(email);
         getSignupLoginPage().enterLoginPassword(password);
         getSignupLoginPage().login();
-
         getSoftAssert().assertTrue(getNavigationPage().loggedInUsername().contains(username),
                 "Logged in as (username) not visible.");
-        getNavigationPage().getDeleteAccount().click();
 
+        getNavigationPage().deleteUser();
         getSoftAssert().assertTrue(getDeletedAccountPage().successfullyDeleted(),
                 "ACCOUNT DELETED! not visible.");
 

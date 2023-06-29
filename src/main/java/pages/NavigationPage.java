@@ -44,4 +44,12 @@ public class NavigationPage extends BasePage {
     public String loggedInUsername() {
         return getLoggedInAs().findElement(By.xpath("./..")).getText();
     }
+
+    public void deleteUser() {
+        getDeleteAccount().click();
+    }
+
+    public void logoutUser() {
+        getLogoutButton().click();
+    }
 }
