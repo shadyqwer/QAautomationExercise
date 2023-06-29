@@ -17,7 +17,24 @@ public class LoginTest extends BaseTest {
         getSignupLoginPage().enterSignupEmail(email);
         getSignupLoginPage().signup();
 
-        creatNewAccount(password);
+        getSignupPage().getTitleMr().click();
+        getSignupPage().getPasswordField().sendKeys(password);
+        getSignupPage().getDayBirth().selectByValue("13");
+        getSignupPage().getMonthBirth().selectByValue("1");
+        getSignupPage().getYearBirth().selectByValue("1995");
+        getSignupPage().getSignUpForNewsletterCheck().click();
+        getSignupPage().getReceiveOffersCheck().click();
+        getSignupPage().getFirstNameField().sendKeys(getFaker().name().firstName());
+        getSignupPage().getLastNameField().sendKeys(getFaker().name().lastName());
+        getSignupPage().getCompanyField().sendKeys(getFaker().company().name());
+        getSignupPage().getAddressField().sendKeys(getFaker().address().fullAddress());
+        getSignupPage().getAddressTwoField().sendKeys(getFaker().address().fullAddress());
+        getSignupPage().getCountrySelect().selectByIndex(1);
+        getSignupPage().getStateField().sendKeys(getFaker().address().state());
+        getSignupPage().getCityField().sendKeys(getFaker().address().city());
+        getSignupPage().getZipcodeField().sendKeys(getFaker().address().zipCode());
+        getSignupPage().getMobileNumberField().sendKeys(getFaker().phoneNumber().phoneNumber());
+        getSignupPage().getCreateAccountButton().click();
 
         getCreatedAccountPage().getContinueButton().click();
         getNavigationPage().getLogoutButton().click();
