@@ -15,6 +15,7 @@ public class SignupLoginPage extends IndexPage {
     private WebElement newUserSignUpText;
     private WebElement loginToYouAccountText;
     private WebElement incorrectEmailPassword;
+    private WebElement emailAlreadyExist;
 
     public SignupLoginPage(WebDriver driver, WebDriverWait wait) {
         super(driver, wait);
@@ -63,6 +64,11 @@ public class SignupLoginPage extends IndexPage {
     public WebElement getIncorrectEmailPassword() {
         incorrectEmailPassword = getDriver().findElement(By.xpath("//p[contains(text(), 'is incorrect')]"));
         return incorrectEmailPassword;
+    }
+
+    public WebElement getEmailAlreadyExist() {
+        emailAlreadyExist = getDriver().findElement(By.xpath("//p[contains(text(), 'already exist!')]"));
+        return emailAlreadyExist;
     }
 
     public SignupLoginPage enterLoginEmail(String text) {

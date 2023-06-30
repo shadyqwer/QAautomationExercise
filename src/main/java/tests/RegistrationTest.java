@@ -1,5 +1,7 @@
 package tests;
 
+import data.TestDataProviders;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class RegistrationTest extends BaseTest {
@@ -54,6 +56,25 @@ public class RegistrationTest extends BaseTest {
         getSoftAssert().assertTrue(getDeletedAccountPage().successfullyDeleted(),
                 "ACCOUNT DELETED! not visible.");
         getDeletedAccountPage().getContinueButton().click();
+
+        getSoftAssert().assertAll();
+    }
+
+    @Test(testName = "Test Case 5: Register User with existing email",
+            dataProvider = "existingEmail", dataProviderClass = TestDataProviders.class)
+    public void verifyUserCanNotRegisterWithExistingEmail(String email) {
+        getIndexPage().open();
+        getSoftAssert().assertTrue(getDriver().getTitle().contains("Automation Exercise"),
+                "Home page not visible successfully.");
+
+        getIndexPage().goToSignupLogin();
+        getSoftAssert().assertTrue(getSignupLoginPage().getNewUserSignUpText().isDisplayed(),
+                "New User Signup! not visible.");
+
+        getSignupLoginPage().enterSignupName(getFaker().name().username());
+        getSignupLoginPage().enterSignupEmail(email);
+        getSignupLoginPage().signup();
+        getSoftAssert().assertTrue(getSignupLoginPage().getEmailAlreadyExist().isDisplayed());
 
         getSoftAssert().assertAll();
     }
