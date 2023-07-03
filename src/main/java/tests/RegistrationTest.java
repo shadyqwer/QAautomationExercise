@@ -1,7 +1,6 @@
 package tests;
 
 import data.TestDataProviders;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class RegistrationTest extends BaseTest {

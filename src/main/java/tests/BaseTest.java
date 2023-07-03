@@ -20,12 +20,14 @@ public class BaseTest {
     private WebDriverWait wait;
     private SoftAssert softAssert;
     private Faker faker;
+    private BasePage basePage;
     private IndexPage indexPage;
     private NavigationPage navigationPage;
     private SignupLoginPage signupLoginPage;
     private SignupPage signupPage;
     private CreatedAccountPage createdAccountPage;
     private DeletedAccountPage deletedAccountPage;
+    private ContactUsPage contactUsPage;
 
     public WebDriver getDriver() {
         return driver;
@@ -41,6 +43,10 @@ public class BaseTest {
 
     public Faker getFaker() {
         return faker;
+    }
+
+    public BasePage getBasePage() {
+        return basePage;
     }
 
     public IndexPage getIndexPage() {
@@ -67,6 +73,10 @@ public class BaseTest {
         return deletedAccountPage;
     }
 
+    public ContactUsPage getContactUsPage() {
+        return contactUsPage;
+    }
+
     @BeforeClass
     public void setUp() {
         WebDriverManager.chromedriver().setup();
@@ -78,13 +88,14 @@ public class BaseTest {
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
-
+        basePage = new BasePage(driver, wait);
         indexPage = new IndexPage(driver, wait);
         navigationPage = new NavigationPage(driver, wait);
         signupLoginPage = new SignupLoginPage(driver, wait);
         signupPage = new SignupPage(driver, wait);
         createdAccountPage = new CreatedAccountPage(driver, wait);
         deletedAccountPage = new DeletedAccountPage(driver, wait);
+        contactUsPage = new ContactUsPage(driver, wait);
     }
 
     @AfterClass

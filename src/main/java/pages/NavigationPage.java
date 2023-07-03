@@ -11,6 +11,7 @@ public class NavigationPage extends BasePage {
     private WebElement deleteAccount;
     private WebElement logoutButton;
     private WebElement homeButton;
+    private WebElement contactUsButton;
 
     public NavigationPage(WebDriver driver, WebDriverWait wait) {
         super(driver, wait);
@@ -39,6 +40,11 @@ public class NavigationPage extends BasePage {
     public WebElement getHomeButton() {
         homeButton = getDriver().findElement(By.className("fa-home"));
         return homeButton;
+    }
+
+    public WebElement getContactUsButton() {
+        contactUsButton = getDriver().findElement(By.className("fa-envelope"));
+        return contactUsButton;
     }
 
     public String loggedInUsername() {
