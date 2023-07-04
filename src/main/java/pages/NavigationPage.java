@@ -12,6 +12,7 @@ public class NavigationPage extends BasePage {
     private WebElement logoutButton;
     private WebElement homeButton;
     private WebElement contactUsButton;
+    private WebElement testCasesButton;
 
     public NavigationPage(WebDriver driver, WebDriverWait wait) {
         super(driver, wait);
@@ -47,6 +48,11 @@ public class NavigationPage extends BasePage {
         return contactUsButton;
     }
 
+    public WebElement getTestCasesButton() {
+        testCasesButton = getDriver().findElement(By.xpath("//a[contains(text(), 'Test Cases')]"));
+        return testCasesButton;
+    }
+
     public String loggedInUsername() {
         return getLoggedInAs().findElement(By.xpath("./..")).getText();
     }
@@ -57,5 +63,10 @@ public class NavigationPage extends BasePage {
 
     public void logoutUser() {
         getLogoutButton().click();
+    }
+
+    public NavigationPage openTestCases() {
+        getTestCasesButton().click();
+        return this;
     }
 }
