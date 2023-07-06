@@ -28,6 +28,8 @@ public class BaseTest {
     private CreatedAccountPage createdAccountPage;
     private DeletedAccountPage deletedAccountPage;
     private ContactUsPage contactUsPage;
+    private AllProductsPage allProductsPage;
+    private SingleProductPage singleProductPage;
 
     public WebDriver getDriver() {
         return driver;
@@ -77,6 +79,14 @@ public class BaseTest {
         return contactUsPage;
     }
 
+    public AllProductsPage getAllProductsPage() {
+        return allProductsPage;
+    }
+
+    public SingleProductPage getSingleProductPage() {
+        return singleProductPage;
+    }
+
     @BeforeClass
     public void setUp() {
         WebDriverManager.chromedriver().setup();
@@ -96,6 +106,8 @@ public class BaseTest {
         createdAccountPage = new CreatedAccountPage(driver, wait);
         deletedAccountPage = new DeletedAccountPage(driver, wait);
         contactUsPage = new ContactUsPage(driver, wait);
+        allProductsPage = new AllProductsPage(driver, wait);
+        singleProductPage = new SingleProductPage(driver, wait);
     }
 
     @AfterClass

@@ -10,7 +10,7 @@ public class TestCasesTest extends BaseTest {
         getIndexPage().open();
     }
 
-    @Test
+    @Test (testName = "Test Case 7: Verify Test Cases Page")
     public void verifyTestCasesPage() {
         getNavigationPage().openTestCases();
         Assert.assertTrue(getDriver().getCurrentUrl().contains("/test_cases"));
