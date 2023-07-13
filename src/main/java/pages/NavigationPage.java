@@ -1,6 +1,7 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -14,6 +15,11 @@ public class NavigationPage extends BasePage {
     private WebElement contactUsButton;
     private WebElement testCasesButton;
     private WebElement productsButton;
+    private WebElement footerBottom;
+    private WebElement subscriptionField;
+    private WebElement subscriptionButton;
+    private WebElement successSubscription;
+    private WebElement cartButton;
 
     public NavigationPage(WebDriver driver, WebDriverWait wait) {
         super(driver, wait);
@@ -59,6 +65,31 @@ public class NavigationPage extends BasePage {
         return productsButton;
     }
 
+    public WebElement getFooterBottom() {
+        footerBottom = getDriver().findElement(By.className("footer-bottom"));
+        return footerBottom;
+    }
+
+    public WebElement getSubscriptionField() {
+        subscriptionField = getDriver().findElement(By.id("susbscribe_email"));
+        return subscriptionField;
+    }
+
+    public WebElement getSubscriptionButton() {
+        subscriptionButton = getDriver().findElement(By.id("subscribe"));
+        return subscriptionButton;
+    }
+
+    public WebElement getSuccessSubscription() {
+        successSubscription = getDriver().findElement(By.id("success-subscribe"));
+        return successSubscription;
+    }
+
+    public WebElement getCartButton() {
+        cartButton = getDriver().findElement(By.xpath("//li//i[@class='fa fa-shopping-cart']"));
+        return cartButton;
+    }
+
     public String loggedInUsername() {
         return getLoggedInAs().findElement(By.xpath("./..")).getText();
     }
@@ -78,5 +109,24 @@ public class NavigationPage extends BasePage {
 
     public void openAllProducts() {
         getProductsButton().click();
+    }
+
+    public void openCart() {
+        getCartButton().click();
+    }
+
+    public NavigationPage scrollDownToFooter() {
+        ((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(true);", getFooterBottom());
+        return this;
+    }
+
+    public NavigationPage enterSubscriptionEmail(String email) {
+        getSubscriptionField().sendKeys(email);
+        return this;
+    }
+
+    public NavigationPage subscribe() {
+        getSubscriptionButton().click();
+        return this;
     }
 }
