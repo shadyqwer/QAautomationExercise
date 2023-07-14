@@ -1,0 +1,45 @@
+package pages;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.util.List;
+
+public class CartPage extends IndexPage {
+    private List<WebElement> productQuantity;
+    private List<WebElement> productPrice;
+
+    public CartPage(WebDriver driver, WebDriverWait wait) {
+        super(driver, wait);
+    }
+
+    public List<WebElement> getProductQuantity() {
+        productQuantity = getDriver().findElements(By.className("cart_quantity"));
+        return productQuantity;
+    }
+
+    public List<WebElement> getProductPrice() {
+        productPrice = getDriver().findElements(By.className("cart_total"));
+        return productPrice;
+    }
+
+    public int productsQuantity() {
+        int quantity = 0;
+        for (WebElement productQuantity : getProductQuantity()) {
+            quantity += Integer.parseInt(productQuantity.getText());
+        }
+        return quantity;
+    }
+
+    public double getCartTotal() {
+        double cartTotal = 0;
+        for (WebElement productPrice : getProductPrice()) {
+            String price = productPrice.getText();
+            price = price.replaceAll("Rs.", "").trim();
+            cartTotal += Double.parseDouble(price);
+        }
+        return cartTotal;
+    }
+}

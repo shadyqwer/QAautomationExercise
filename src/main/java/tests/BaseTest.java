@@ -30,6 +30,7 @@ public class BaseTest {
     private ContactUsPage contactUsPage;
     private AllProductsPage allProductsPage;
     private SingleProductPage singleProductPage;
+    private CartPage cartPage;
 
     public WebDriver getDriver() {
         return driver;
@@ -87,6 +88,10 @@ public class BaseTest {
         return singleProductPage;
     }
 
+    public CartPage getCartPage() {
+        return cartPage;
+    }
+
     @BeforeClass
     public void setUp() {
         WebDriverManager.chromedriver().setup();
@@ -108,6 +113,7 @@ public class BaseTest {
         contactUsPage = new ContactUsPage(driver, wait);
         allProductsPage = new AllProductsPage(driver, wait);
         singleProductPage = new SingleProductPage(driver, wait);
+        cartPage = new CartPage(driver, wait);
     }
 
     @AfterClass
