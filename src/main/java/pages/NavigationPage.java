@@ -102,6 +102,10 @@ public class NavigationPage extends BasePage {
         getLogoutButton().click();
     }
 
+    public void openSignupLoginPage() {
+        getSignupLoginButton().click();
+    }
+
     public NavigationPage openTestCases() {
         getTestCasesButton().click();
         return this;

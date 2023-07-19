@@ -31,6 +31,8 @@ public class BaseTest {
     private AllProductsPage allProductsPage;
     private SingleProductPage singleProductPage;
     private CartPage cartPage;
+    private CheckoutPage checkoutPage;
+    private PaymentPage paymentPage;
 
     public WebDriver getDriver() {
         return driver;
@@ -92,6 +94,14 @@ public class BaseTest {
         return cartPage;
     }
 
+    public CheckoutPage getCheckoutPage() {
+        return checkoutPage;
+    }
+
+    public PaymentPage getPaymentPage() {
+        return paymentPage;
+    }
+
     @BeforeClass
     public void setUp() {
         WebDriverManager.chromedriver().setup();
@@ -114,6 +124,8 @@ public class BaseTest {
         allProductsPage = new AllProductsPage(driver, wait);
         singleProductPage = new SingleProductPage(driver, wait);
         cartPage = new CartPage(driver, wait);
+        checkoutPage = new CheckoutPage(driver, wait);
+        paymentPage = new PaymentPage(driver, wait);
     }
 
     @AfterClass

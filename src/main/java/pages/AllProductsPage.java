@@ -65,6 +65,7 @@ public class AllProductsPage extends IndexPage {
     }
 
     public AllProductsPage addProductToCart(int index) {
+        hoverOverProduct(index);
         int inx = (index + 1) * 2;
         getDriver().findElement(By.xpath("(//a[@class='btn btn-default add-to-cart'])["+inx+"]")).click();
         return this;

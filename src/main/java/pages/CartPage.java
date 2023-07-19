@@ -10,6 +10,7 @@ import java.util.List;
 public class CartPage extends IndexPage {
     private List<WebElement> productQuantity;
     private List<WebElement> productPrice;
+    private WebElement proceedToCheckoutButton;
 
     public CartPage(WebDriver driver, WebDriverWait wait) {
         super(driver, wait);
@@ -23,6 +24,11 @@ public class CartPage extends IndexPage {
     public List<WebElement> getProductPrice() {
         productPrice = getDriver().findElements(By.className("cart_total"));
         return productPrice;
+    }
+
+    public WebElement getProceedToCheckoutButton() {
+        proceedToCheckoutButton = getDriver().findElement(By.className("check_out"));
+        return proceedToCheckoutButton;
     }
 
     public int productsQuantity() {
@@ -42,4 +48,11 @@ public class CartPage extends IndexPage {
         }
         return cartTotal;
     }
+
+    public CartPage proceedToCheckout() {
+        getProceedToCheckoutButton().click();
+        return this;
+    }
+
+
 }
