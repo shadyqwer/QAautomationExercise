@@ -216,4 +216,17 @@ public class PlaceOrderTest extends BaseTest {
 
         getNavigationPage().deleteUser();
     }
+
+    @Test(testName = "Test Case 17: Remove Products From Cart")
+    public void verifyRemoveProductsFromCart() {
+        getNavigationPage().openAllProducts();
+        getAllProductsPage()
+                .addProductToCart(1)
+                .continueShopping()
+                .addProductToCart(2)
+                .viewCart();
+
+        getCartPage().removeAllProducts();
+        Assert.assertFalse(getCartPage().getEmptyCartField().isDisplayed());
+    }
 }

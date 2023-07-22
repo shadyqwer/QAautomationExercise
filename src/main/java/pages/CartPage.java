@@ -11,6 +11,7 @@ public class CartPage extends IndexPage {
     private List<WebElement> productQuantity;
     private List<WebElement> productPrice;
     private WebElement proceedToCheckoutButton;
+    private WebElement emptyCartField;
 
     public CartPage(WebDriver driver, WebDriverWait wait) {
         super(driver, wait);
@@ -29,6 +30,11 @@ public class CartPage extends IndexPage {
     public WebElement getProceedToCheckoutButton() {
         proceedToCheckoutButton = getDriver().findElement(By.className("check_out"));
         return proceedToCheckoutButton;
+    }
+
+    public WebElement getEmptyCartField() {
+        emptyCartField = getDriver().findElement(By.id("empty_cart"));
+        return emptyCartField;
     }
 
     public int productsQuantity() {
@@ -54,5 +60,10 @@ public class CartPage extends IndexPage {
         return this;
     }
 
-
+    public void removeAllProducts() {
+        List<WebElement> deleteButtons = getDriver().findElements(By.className("cart_quantity_delete"));
+        for (WebElement deleteButton : deleteButtons) {
+            deleteButton.click();
+        }
+    }
 }
