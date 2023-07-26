@@ -130,10 +130,6 @@ public class BaseTest {
 
     @AfterClass
     public void cleanUp() {
-        List<String> allOpenedTabs = new ArrayList<>(driver.getWindowHandles());
-        for (String tab : allOpenedTabs) {
-            driver.switchTo().window(tab);
-            driver.close();
-        }
+        driver.quit();
     }
 }
